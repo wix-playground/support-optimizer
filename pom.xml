@@ -20,14 +20,33 @@
 
     <developers>
         <developer>
-            <name>dariiad</name>
+            <name>Dariia Drobotko</name>
             <email>darriad@wix.com</email>
             <roles>
                 <role>owner</role>
             </roles>
         </developer>
+        <developer>
+            <name>Rostyslav Padalko</name>
+            <email>rostyslavp@wix.com</email>
+            <roles>
+                <role>owner</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Marharyta Nedzelska</name>
+            <email>marharytan@wix.com</email>
+            <roles>
+                <role>owner</role>
+            </roles>
+        </developer>
     </developers>
-
+    <mailingLists>
+        <mailingList>
+            <name>slack</name>
+            <subscribe>support-optimizer</subscribe>
+        </mailingList>
+    </mailingLists>
     <build>
         <plugins>
             <plugin>
