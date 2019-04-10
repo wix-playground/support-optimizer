@@ -9,27 +9,13 @@ import PropTypes from 'prop-types';
 import {BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 const sampleData = [
-  {
-    name: '10-11', max: 4000, min: 2400, mid: 2400,
-  },
-  {
-    name: '11-12', max: 3000, min: 1398, mid: 2210,
-  },
-  {
-    name: '12-13', max: 2000, min: 9800, mid: 2290,
-  },
-  {
-    name: '14-15', max: 2780, min: 3908, mid: 2000,
-  },
-  {
-    name: '15-16', max: 1890, min: 4800, mid: 2181,
-  },
-  {
-    name: '16-17', max: 2390, min: 3800, mid: 2500,
-  },
-  {
-    name: '17-18', max: 3490, min: 4300, mid: 2100,
-  },
+  {name: '10-11', max: 4000, min: 2400, mid: 2400},
+  {name: '11-12', max: 3000, min: 1398, mid: 2210},
+  {name: '12-13', max: 2000, min: 9800, mid: 2290},
+  {name: '14-15', max: 2780, min: 3908, mid: 2000},
+  {name: '15-16', max: 1890, min: 4800, mid: 2181},
+  {name: '16-17', max: 2390, min: 3800, mid: 2500},
+  {name: '17-18', max: 3490, min: 4300, mid: 2100},
 ];
 
 class App extends React.Component {
@@ -69,7 +55,8 @@ class App extends React.Component {
                 value={date}
                 selectRange={false}
                 minDate={minDate}
-                maxDate={maxDate} minDetail='month'
+                maxDate={maxDate}
+                minDetail='month'
               />
             </Col>
             <Col span={8}>
