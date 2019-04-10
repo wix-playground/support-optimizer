@@ -1,4 +1,6 @@
 {
-  "app.title": "Hello World!",
-  "app.intro": "Get started here: https://wix.github.io/yoshi"
+  "app.title": "Support Optimizer",
+  "app.intro": "",
+  "app.calls": "Calls",
+  "app.tickets": "Tickets"
 }
