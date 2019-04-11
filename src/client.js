@@ -23,13 +23,10 @@ const browserHistory = createBrowserHistory();
 // See https://github.com/wix-private/fed-infra/blob/master/fedops/fedops-logger/README.md
 fedopsLogger.appLoaded();
 
-
 ReactDOM.render(
   <Router history={browserHistory}>
     <I18nextProvider i18n={i18n(locale)}>
-      <Route path={'/'} component={App}>
-
-      </Route>
+      <Route path={'/'} component={App}/>
     </I18nextProvider>
   </Router>,
   document.getElementById('root'),

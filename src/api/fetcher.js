@@ -19,19 +19,17 @@ export default class Fetcher {
     return this.api.get(apiConfig.dateRange);
   }
 
-  async getTickets(day = '2019-04-10') {
-    return this.api.get(apiConfig.tickets, {
+  getTickets = async (day = '2019-04-10') =>
+    this.api.get(apiConfig.tickets, {
       params: {
         day,
       },
     });
-  }
 
-  async getCalls(day = '2019-04-10') {
-    return this.api.get(apiConfig.calls, {
+  getCalls = async (day = '2019-04-10') =>
+    this.api.get(apiConfig.calls, {
       params: {
         day,
       },
     });
-  };
 }
