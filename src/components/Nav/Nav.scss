@@ -13,8 +13,8 @@
 
   svg {
     position: relative;
-    top: 6px;
-    left: -6px;
+    top: 5px;
+    left: -2px;
   }
 
   li {
@@ -26,7 +26,8 @@
     text-decoration: none;
     color: #fff;
     background: $linkColor;
-    padding: 5px 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
 
     &:hover {
       background: $linkHoverColor;
@@ -34,6 +35,8 @@
 
     &.active {
       background: $linkActiveColor;
+      color: $linkColor;
+      border: 1px solid $linkColor;
     }
   }
 }

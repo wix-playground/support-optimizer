@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate } from 'react-i18next';
 import s from './App.scss';
+import c from '../Calendar/Calendar.scss';
 import Calendar from 'react-calendar';
 import {Switch, Route} from 'react-router-dom';
 import Page from 'wix-style-react/Page';
@@ -12,13 +13,13 @@ import Fetcher from '../../api/fetcher';
 
 
 const sampleData = [
-  {name: '10-11', max: 4000, min: 2400, mid: 2400},
+  {name: '10-11', max: 4000, min: 1400, mid: 2400},
   {name: '11-12', max: 3000, min: 1398, mid: 2210},
-  {name: '12-13', max: 2000, min: 9800, mid: 2290},
-  {name: '14-15', max: 2780, min: 3908, mid: 2000},
-  {name: '15-16', max: 1890, min: 4800, mid: 2181},
-  {name: '16-17', max: 2390, min: 3800, mid: 2500},
-  {name: '17-18', max: 3490, min: 4300, mid: 2100},
+  {name: '12-13', max: 2400, min: 1800, mid: 2290},
+  {name: '14-15', max: 2780, min: 1908, mid: 2000},
+  {name: '15-16', max: 2000, min: 1600, mid: 2181},
+  {name: '16-17', max: 2390, min: 1800, mid: 2500},
+  {name: '17-18', max: 3490, min: 1300, mid: 2100},
 ];
 
 class App extends React.Component {
@@ -73,9 +74,7 @@ class App extends React.Component {
 
     return (
       <Page upgrade>
-        <Page.Header key="header" title={t('app.title')}>
-          <a className={s.logo}></a>
-        </Page.Header>
+        <Page.Header key="header" title={t('app.title')}/>
         <Page.Content key="content">
           <Container>
             <Row>
@@ -84,6 +83,7 @@ class App extends React.Component {
             <Row>
               <Col span={4}>
                 <Calendar
+                  className={c.reactCalendar}
                   onChange={this.onCalendarChange}
                   value={date}
                   selectRange={false}
@@ -110,9 +110,9 @@ class App extends React.Component {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="min" stackId="a" fill="#e25d47" />
-                  <Bar dataKey="max" stackId="a" fill="#eb8404" />
-                  <Bar dataKey="mid" stackId="a" fill="#199384" />
+                  <Bar dataKey="min" stackId="a" fill="#C70039" />
+                  <Bar dataKey="max" stackId="a" fill="#DAF7A6" />
+                  <Bar dataKey="mid" stackId="a" fill="#FFC300" />
                 </BarChart>
               </Col>
             </Row>
