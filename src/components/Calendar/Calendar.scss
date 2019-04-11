@@ -1,8 +1,5 @@
-$white: #FFFFFF;
-$ltGrey: #EFEFEF;
-$mdGrey: #C0C0C0;
-$dkGrey: #CCCCCC;
-$secondary:#2875C7;
+@import "../../styles/variables";
+
 $dkSecondary: darken($secondary,10%);
 $ltSecondary: lighten($secondary,45%);
 $borderColor: $dkGrey;

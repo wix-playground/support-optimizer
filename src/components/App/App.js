@@ -52,22 +52,22 @@ class App extends React.Component {
     if (this.state.isLoading) {
       return <div className={s.loaderWrapper}><Loader/></div>;
     }
-
     const { t } = this.props;
     const { date, fetcher } = this.state;
 
     return (
       <Page upgrade>
-        <Page.Header key="header" title={t('app.title')}>
-          <a className={s.logo}/>
-        </Page.Header>
+        <Page.Header
+          title={t('app.title')}
+          actionsBar={() => <div key="logo" className={s.logo}></div>}
+        />
         <Page.Content key="content">
           <Container>
             <Row>
               <Nav/>
             </Row>
             <Row>
-              <Col span={3}>
+              <Col span={4}>
                 <Calendar
                   className={c.reactCalendar}
                   onChange={this.onCalendarChange}
