@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+
+
+.nav {
+  text-align: left;
+  font-size: $navFontSize;
+
+  ul {
+    display: block;
+    margin: 0;
+    padding: 0 15px;
+  }
+
+  svg {
+    position: relative;
+    top: 6px;
+    left: -6px;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    background: $linkColor;
+    padding: 5px 15px;
+
+    &:hover {
+      background: $linkHoverColor;
+    }
+
+    &.active {
+      background: $linkActiveColor;
+    }
+  }
+}

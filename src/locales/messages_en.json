@@ -2,5 +2,6 @@
   "app.title": "Support Optimizer",
   "app.intro": "",
   "app.calls": "Calls",
-  "app.tickets": "Tickets"
+  "app.tickets": "Tickets",
+  "app.home": "Main"
 }

@@ -2,10 +2,10 @@ import React from 'react';
 import { translate } from 'react-i18next';
 import s from './App.scss';
 import Calendar from 'react-calendar';
-import Tabs from 'wix-style-react/Tabs';
-import Heading from 'wix-style-react/Heading';
+import {Switch, Route} from 'react-router-dom';
 import Page from 'wix-style-react/Page';
 import {Container, Row, Col} from 'wix-style-react/Grid';
+import Nav from '../Nav';
 import Loader from "wix-style-react/Loader";
 import {BarChart, Bar,  XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import Fetcher from '../../api/fetcher';
@@ -73,16 +73,13 @@ class App extends React.Component {
 
     return (
       <Page upgrade>
-        <Page.Header key="header" title={t('app.title')} />
+        <Page.Header key="header" title={t('app.title')}>
+          <a className={s.logo}></a>
+        </Page.Header>
         <Page.Content key="content">
           <Container>
             <Row>
-              <Tabs
-                activeId={1}
-                dataHook="story-tabs"
-                items={[{id: 1, title: t('app.tickets')}, {id: 2, title: t('app.calls')}]}
-                sideContent={undefined}
-              />
+              <Nav/>
             </Row>
             <Row>
               <Col span={4}>
@@ -97,6 +94,11 @@ class App extends React.Component {
               </Col>
               <Col span={1}/>
               <Col span={7}>
+                <Switch>
+                  <Route exact path="/tickets" component={() => 'tickets'} />
+                  <Route path="/calls" component={() => 'calls'} />
+                </Switch>
+
                 <BarChart
                   width={500}
                   height={300}
