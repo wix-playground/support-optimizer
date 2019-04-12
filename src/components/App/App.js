@@ -77,10 +77,11 @@ class App extends React.Component {
     const { fetcher, selectedDate, minDate, maxDate, timezone } = this.state;
     return (
       <>
-        <FullScreenModal t={t} onSelect={this.onDropdownSelect} selected={timezone}/>
+      <FullScreenModal t={t} onSelect={this.onDropdownSelect} selected={timezone}/>
       <Page upgrade>
         <Page.Header
           title={t('app.title')}
+          data-testid="app-title"
           actionsBar={() => <div key="logo" className={s.logo} />}
         />
         <Page.Content key="content">
