@@ -37,30 +37,27 @@ constructor() {
     this.state = {
       isOpenFullScreenModal: true,
     };
-    this.costInput = React.createRef();
-    this.supportInput = React.createRef();
-    this.customerInput = React.createRef();
   }
 
   render() {
     const {onChange} = this.props;
     return (
-      <form data-hook="costs-form">
+     <div data-hook="costs-form">
         <Layout>
           <Cell span={7}>
             <Label size="medium">{'Quota'}</Label>
-            <Input name={'quota'} type="number" suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} required={true} onBlur={opt => onChange(opt.currentTarget)}/>
+            <Input name={'quota'} type="number" suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} onBlur={opt => onChange(opt.currentTarget)}/>
           </Cell>
           <Cell span={7}>
             <Label size="medium">{'Support Cost'}</Label>
-            <Input  name={'support'} type="number" ref={this.costInput} suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} required={true} onBlur={opt => onChange(opt.currentTarget)}/>
+            <Input  name={'support'} type="number" suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} onBlur={opt => onChange(opt.currentTarget)}/>
           </Cell>
           <Cell span={7}>
             <Label size="medium">{'Customer Waiting Cost'}</Label>
-            <Input  name={'customer'} type="number" ref={this.customerInput} suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} required={true} onBlur={opt => onChange(opt.currentTarget)}/>
+            <Input  name={'customer'} type="number" suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} onBlur={opt => onChange(opt.currentTarget)}/>
           </Cell>
         </Layout>
-      </form>
+      </div>
     );
   }
 }
