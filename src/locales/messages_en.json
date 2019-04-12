@@ -3,5 +3,7 @@
   "app.intro": "",
   "app.calls": "Calls",
   "app.tickets": "Tickets",
-  "app.home": "Main"
+  "app.home": "Main",
+  "app.modal_heading": "Please select data you want to get",
+  "app.modal_ok": "Set data"
 }

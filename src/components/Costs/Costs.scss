@@ -1,0 +1,8 @@
+@import "../../styles/variables";
+
+:global([data-hook="costs-form"]){
+  label {
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+}

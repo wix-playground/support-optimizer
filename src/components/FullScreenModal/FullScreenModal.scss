@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+:global([data-hook="header-close-button"]){
+  display: none !important;
+}
+
+:global([data-hook="message-box-body"]){
+  min-height: 300px;
+
+  label {
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+}
+
+:global(.error) {
+  color: red;
+  display: block;
+}
