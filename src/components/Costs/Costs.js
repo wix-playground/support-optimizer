@@ -44,17 +44,17 @@ constructor() {
     return (
      <div data-hook="costs-form">
         <Layout>
-          <Cell span={7}>
-            <Label size="medium">{'Quota'}</Label>
-            <Input name={'quota'} type="number" suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} onBlur={opt => onChange(opt.currentTarget)}/>
+          <Cell span={10}>
+            <Label size="medium" for={'quota'}>{'Quota'}</Label>
+            <Input name={'quota'} type="number" suffix={<Input.Affix>$</Input.Affix>} onBlur={opt => onChange(opt.currentTarget)}/>
           </Cell>
-          <Cell span={7}>
-            <Label size="medium">{'Support Cost'}</Label>
-            <Input  name={'support'} type="number" suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} onBlur={opt => onChange(opt.currentTarget)}/>
+          <Cell span={10}>
+            <Label size="medium" for={'support'}>{'Support Cost'}</Label>
+            <Input  name={'support'} type="number" suffix={<Input.Affix>$</Input.Affix>} onBlur={opt => onChange(opt.currentTarget)}/>
           </Cell>
-          <Cell span={7}>
-            <Label size="medium">{'Customer Waiting Cost'}</Label>
-            <Input  name={'customer'} type="number" suffix={<Input.Affix>$</Input.Affix>} errorMessage={'Should be number'} helpMessage={'Should be number'} onBlur={opt => onChange(opt.currentTarget)}/>
+          <Cell span={10}>
+            <Label size="medium" for={'customer'}>{'Customer Waiting Cost'}</Label>
+            <Input  name={'customer'} type="number" suffix={<Input.Affix>$</Input.Affix>} onBlur={opt => onChange(opt.currentTarget)}/>
           </Cell>
         </Layout>
       </div>

@@ -1,6 +1,10 @@
 @import "../../styles/variables";
 
 :global([data-hook="costs-form"]){
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid $mdGrey;
+
   label {
     padding-bottom: 10px;
     display: inline-block;
