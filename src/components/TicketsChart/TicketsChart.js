@@ -3,6 +3,7 @@ import { translate } from 'react-i18next';
 import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from 'recharts';
 import {Col} from 'wix-style-react/dist/src/Grid';
 import Loader from 'wix-style-react/Loader';
+import { convertDate } from "../../utils";
 
 const sampleData = [
   {name: '10-11', max: 4000, min: 2400, mid: 2400},
@@ -28,8 +29,9 @@ class CallsChart extends React.Component {
 
   async componentDidMount() {
     this.setIsLoading(true);
+    const convertedDateToRightFormat = convertDate(this.props.selectedDate);
 
-    const { data: ticketsData } = await this.props.fetcher.getTickets(this.props.selectedDate);
+    const { data: ticketsData } = await this.props.fetcher.getTickets(convertedDateToRightFormat);
 
     this.setState({
       ticketsData,

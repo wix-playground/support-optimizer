@@ -1,8 +1,17 @@
 import React from 'react';
 import { translate } from 'react-i18next';
-import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from "recharts";
-import {Col} from "wix-style-react/dist/src/Grid";
-import Loader from "wix-style-react/Loader";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Col } from 'wix-style-react/dist/src/Grid';
+import Loader from 'wix-style-react/Loader';
+import { convertDate } from '../../utils';
 
 const sampleData = [
   {name: '10-11', max: 4000, min: 2400, mid: 2400},
@@ -14,7 +23,7 @@ const sampleData = [
   {name: '17-18', max: 3490, min: 4300, mid: 2100},
 ];
 
-class CallsChart extends React.Component {
+class CallsChart extends React.PureComponent {
   constructor() {
     super();
 
@@ -24,12 +33,15 @@ class CallsChart extends React.Component {
     };
   }
 
-  setIsLoading = isLoading => this.setState({isLoading});
+  setIsLoading = isLoading => this.setState({ isLoading });
 
   async componentDidMount() {
     this.setIsLoading(true);
 
-    const { data: callsData } = await this.props.fetcher.getCalls(this.props.selectedDate);
+    const convertedDateToRightFormat = convertDate(this.props.selectedDate);
+
+    const { data: callsData } =
+      await this.props.fetcher.getCalls(convertedDateToRightFormat);
 
     this.setState({
       callsData,
@@ -43,7 +55,6 @@ class CallsChart extends React.Component {
     }
     return (
       <Col span={7}>
-        <div>{this.props.selectedDate}</div>
         <BarChart
           width={500}
           height={300}
