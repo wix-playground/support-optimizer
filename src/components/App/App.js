@@ -30,7 +30,7 @@ class App extends React.Component {
       selectedDate: tomorrowDate,
       timezone: null,
       costs: {
-        quota: 60,
+        quota: 100,
         supportCost: 1,
         customerWaitingCost: 1,
       },

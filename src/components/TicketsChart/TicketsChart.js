@@ -59,7 +59,9 @@ class CallsChart extends React.Component {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="count" stroke="#8884d8" activeDot={{ r: 6 }} />
+            <Line type="monotone" dataKey="count" stroke="#8884d8" activeDot={{ r: 6  }} />
+            <Line type="monotone" dataKey="max_count" stroke="#f22b46" activeDot={{ r: 5 }} />
+            <Line type="monotone" dataKey="min_count" stroke="#f29f2b" activeDot={{ r: 5 }} />
           </LineChart>
 
         </Col>
@@ -77,7 +79,9 @@ class CallsChart extends React.Component {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="count" stackId="count" fill="#e25d47" />
+            <Bar dataKey="count" stackId="count" fill="#8884d8" />
+            <Bar dataKey="max_count" stackId="count" fill="#f22b46" />
+            <Bar dataKey="min_count" stackId="count" fill="#f29f2b" />
           </BarChart>
         </Col>
       </Row>
