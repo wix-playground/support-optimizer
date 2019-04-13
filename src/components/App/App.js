@@ -16,11 +16,6 @@ import { getTomorrowDate } from '../../utils';
 import Costs from '../Costs';
 import FullScreenModal from '../FullScreenModal';
 
-const defaultCosts = {
-  quota: 10,
-  support: 20,
-  customer: 30,
-};
 
 class App extends React.Component {
   constructor() {
@@ -34,47 +29,54 @@ class App extends React.Component {
       minDate: tomorrowDate,
       selectedDate: tomorrowDate,
       timezone: null,
-      ...defaultCosts
+      costs: {
+        quota: 60,
+        supportCost: 1,
+        customerWaitingCost: 1,
+      },
     };
   }
 
   onCalendarChange = selectedDate => this.setState({ selectedDate });
-  setMaxDate = dayCount => {
+  setMaxDate = maxDate => {
     this.setState({
-      maxDate: new Date(new Date().setDate(new Date().getDate() + dayCount)),
+      maxDate: new Date(maxDate),
     });
   };
 
-  onDropdownSelect = option => {
-    console.log('onDropdownSelect', option.value);
-    this.setState({ timezone: option.value });
-  }
+  onDropdownSelect = ({ value }) => this.setState({ timezone: value });
 
-  onCostsInputChange = el => {
-    const obj = {};
-    const val = el.value !== '' ? parseInt(el.value) : defaultCosts[el.name];
-    obj[el.name] = val;
-    this.setState({ ...obj });
-  }
+  onCostsInputChange = e => {
+    const updateValue = {};
+    updateValue[e.target.name] = e.target.value;
+    this.setState({
+      costs: {
+        ...this.state.costs,
+        ...updateValue,
+      },
+    });
+  };
 
   setIsLoading = isLoading =>
     this.setState({isLoading});
 
-  async componentDidMount() {
+  componentWillMount() {
     this.setIsLoading(true);
+  }
 
-    const {data: {max_predict_days} } = await this.state.fetcher.getDateRange();
+  async componentDidMount() {
+    const { data: {max_predict_date} } = await this.state.fetcher.getDateRange();
 
-    this.setMaxDate(max_predict_days);
+    this.setMaxDate(max_predict_date);
     this.setIsLoading(false);
   }
 
   render() {
-    if (this.state.isLoading || this.state.maxDate === null) {
+    if (this.state.isLoading) {
       return <div className={s.loaderWrapper}><Loader/></div>;
     }
     const { t } = this.props;
-    const { fetcher, selectedDate, minDate, maxDate, timezone } = this.state;
+    const {fetcher, selectedDate, minDate, maxDate, timezone, costs  } = this.state;
     return (
       <>
       <FullScreenModal t={t} onSelect={this.onDropdownSelect} selected={timezone}/>
@@ -90,6 +92,7 @@ class App extends React.Component {
               <Nav />
             </Row>
             <Row>
+              <Col span={1} />
               <Col span={4}>
                 <Calendar
                   className={c.reactCalendar}
@@ -100,9 +103,17 @@ class App extends React.Component {
                   maxDate={maxDate}
                   minDetail={'month'}
                 />
-                <Costs onChange={this.onCostsInputChange}/>
+
               </Col>
-              <Col span={1} />
+              <Col span={2} />
+              <Col span={4}>
+                <Costs
+                  onChange={this.onCostsInputChange}
+                  costs={costs}
+                />
+              </Col>
+            </Row>
+            <Row>
               <Switch>
                 <Route
                   path="/tickets"
@@ -111,6 +122,7 @@ class App extends React.Component {
                       selectedDate={selectedDate}
                       fetcher={fetcher}
                       title={'Tickets'}
+                      costs={costs}
                     />
                   }
                 />
@@ -121,6 +133,7 @@ class App extends React.Component {
                       selectedDate={selectedDate}
                       fetcher={fetcher}
                       title={'Calls'}
+                      costs={costs}
                     />
                   }
                 />

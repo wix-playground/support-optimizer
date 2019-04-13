@@ -32,28 +32,8 @@ export default hot(module, (app, context) => {
     res.renderView('./index.ejs', renderModel);
   });
 
-  app.get("/calls",(req, res) => {
-    // Extract some data from every incoming request.
-    const renderModel = getRenderModel(req);
-
-    // Send a response back to the client.
-    res.renderView('./index.ejs', renderModel);
-  });
-
-  app.get("/tickets", (req, res) => {
-    // Extract some data from every incoming request.
-    const renderModel = getRenderModel(req);
-
-    // Send a response back to the client.
-    res.renderView('./index.ejs', renderModel);
-  });
-
-  app.get("/tickets", (req, res) => {
-    // Extract some data from every incoming request.
-    const renderModel = getRenderModel(req);
-
-    // Send a response back to the client.
-    res.renderView('./index.ejs', renderModel);
+  app.get('*', (req, res) => {
+    res.redirect('/');
   });
 
   function getRenderModel(req) {

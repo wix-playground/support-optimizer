@@ -9,9 +9,9 @@ import {
   XAxis,
   YAxis,
   Line,
-  LineChart
+  LineChart,
 } from 'recharts';
-import { Col, Row} from 'wix-style-react/dist/src/Grid';
+import { Col, Row } from 'wix-style-react/dist/src/Grid';
 import Loader from 'wix-style-react/Loader';
 import { convertDate } from '../../utils';
 
@@ -20,7 +20,8 @@ class CallsChart extends React.PureComponent {
     super();
 
     this.state = {
-      callsData: {},
+      issues: [],
+      support: [],
       isLoading: null,
     };
   }
@@ -30,29 +31,37 @@ class CallsChart extends React.PureComponent {
   async componentDidMount() {
     this.setIsLoading(true);
 
-    const convertedDateToRightFormat = convertDate(this.props.selectedDate);
+    const { costs, selectedDate } = this.props;
 
-    const { data: callsData } =
-      await this.props.fetcher.getCalls(convertedDateToRightFormat);
+    const convertedDateToRightFormat = convertDate(selectedDate);
+
+    const { data: { issues, support} } =
+      await this.props.fetcher.getCalls({
+        date: convertedDateToRightFormat,
+        ...costs,
+      });
 
     this.setState({
-      callsData,
+      issues,
+      support,
     });
     this.setIsLoading(false);
   }
 
   render() {
     if (this.state.isLoading) {
-        return <Loader />;
+        return <div style={{ display: 'flex', justifyContent: 'center'}}><Loader /></div>;
     }
+
+    const { issues, support } = this.state;
     return (
-      <Col span={7}>
-        <Row>
-          <Row>Selected date - {convertDate(this.props.selectedDate)}</Row>
+      <Row>
+        <Col span={5}>
+          <Row>Calls</Row>
           <LineChart
             width={500}
             height={300}
-            data={this.state.callsData.calls}
+            data={issues}
             margin={{
               top: 5, right: 30, left: 20, bottom: 5,
             }}
@@ -64,13 +73,14 @@ class CallsChart extends React.PureComponent {
             <Legend />
             <Line type="monotone" dataKey="count" stroke="#8884d8" activeDot={{ r: 6 }} />
           </LineChart>
-        </Row>
-
-        <Row>
+        </Col>
+        <Col span={2} />
+        <Col span={5}>
+          <Row>Support</Row>
           <BarChart
             width={500}
             height={300}
-            data={this.state.callsData.support}
+            data={support}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -80,8 +90,9 @@ class CallsChart extends React.PureComponent {
             <Legend />
             <Bar dataKey="count" stackId="count" fill="#e25d47" />
           </BarChart>
-        </Row>
-      </Col>
+        </Col>
+
+      </Row>
     );
   }
 };

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { MessageBoxFunctionalLayout } from 'wix-style-react/MessageBox';
 import Input from 'wix-style-react/Input';
-import Modal from 'wix-style-react/Modal';
-import Dropdown from 'wix-style-react/Dropdown';
-import { Layout, Cell } from 'wix-style-react/Layout';
 import Label from 'wix-style-react/Label';
-import {translate} from "react-i18next";
-import s from './Costs.scss';
+import { translate } from "react-i18next";
+import { Row } from "wix-style-react/dist/src/Grid";
+
 
 const timezones = [
   {
@@ -31,33 +28,59 @@ const timezones = [
   }
 ];
 
-class Costs extends React.Component {
-constructor() {
-    super();
-    this.state = {
-      isOpenFullScreenModal: true,
-    };
+class Costs extends Component {
+  constructor() {
+      super();
+      this.state = {
+        isOpenFullScreenModal: true,
+      };
   }
 
   render() {
-    const {onChange} = this.props;
+    const { onChange, costs: { customerWaitingCost, quota, supportCost }} = this.props;
+
     return (
-     <div data-hook="costs-form">
-        <Layout>
-          <Cell span={10}>
-            <Label size="medium" for={'quota'}>{'Quota'}</Label>
-            <Input name={'quota'} type="number" suffix={<Input.Affix>$</Input.Affix>} onBlur={opt => onChange(opt.currentTarget)}/>
-          </Cell>
-          <Cell span={10}>
-            <Label size="medium" for={'support'}>{'Support Cost'}</Label>
-            <Input  name={'support'} type="number" suffix={<Input.Affix>$</Input.Affix>} onBlur={opt => onChange(opt.currentTarget)}/>
-          </Cell>
-          <Cell span={10}>
-            <Label size="medium" for={'customer'}>{'Customer Waiting Cost'}</Label>
-            <Input  name={'customer'} type="number" suffix={<Input.Affix>$</Input.Affix>} onBlur={opt => onChange(opt.currentTarget)}/>
-          </Cell>
-        </Layout>
-      </div>
+     <>
+        <Row>
+          <Label size="medium" for="quota">
+            Quota
+          </Label>
+          <Input
+            name="quota"
+            type="number"
+            value={quota}
+            suffix={<Input.Affix>$</Input.Affix>}
+            onChange={onChange}
+          />
+        </Row>
+        <Row>
+          <Label
+            size="medium"
+            for="supportCost"
+          >
+            Support Cost
+          </Label>
+          <Input
+            name="supportCost"
+            value={supportCost}
+            type="number"
+            suffix={<Input.Affix>$</Input.Affix>}
+            onChange={onChange}
+          />
+        </Row>
+        <Row>
+          <Label size="medium" for="customerWaitingCost">
+            Customer Waiting Cost
+          </Label>
+          <Input
+            name="customerWaitingCost"
+            type="number"
+            value={customerWaitingCost}
+            suffix={<Input.Affix>$</Input.Affix>}
+            onChange={onChange}
+          />
+        </Row>
+      </>
     );
   }
 }

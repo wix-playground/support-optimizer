@@ -38,35 +38,34 @@ constructor() {
     const { t } = this.props;
     const { error } = this.state;
     return (
-      <div>
-        <Modal
-          isOpen={this.state.isOpenFullScreenModal}
-          onRequestClose={this.onModalClose}
-          contentLabel={t('app.modal_heading')}
+      <Modal
+        isOpen={this.state.isOpenFullScreenModal}
+        onRequestClose={this.onModalClose}
+        contentLabel={t('app.modal_heading')}
+      >
+        <MessageBoxFunctionalLayout
+          confirmText={t('app.modal_ok')}
+          dataHook="fullscreen-modal"
+          onOk={this.onModalClose}
+          theme="blue"
+          title={t('app.modal_heading')}
         >
-          <MessageBoxFunctionalLayout
-            confirmText={t('app.modal_ok')}
-            dataHook="fullscreen-modal"
-            fullscreen
-            onOk={this.onModalClose}
-            theme="blue"
-            title={t('app.modal_heading')}
-          >
-            <Label size="medium">{'Time Zone'}</Label>
-            <Dropdown
-              name={'timezone'}
-              onSelect={option => this.onDropDownSelect(option)}
-              options={timezones}
-              autoFocus={true}
-              error={error}
-            />
-            { error
-              ? <p className="error">Please select time zone</p>
-              : null
-            }
-          </MessageBoxFunctionalLayout>
-        </Modal>
-      </div>
+          <Label size="medium">
+            Time Zone
+          </Label>
+          <Dropdown
+            name={'timezone'}
+            onSelect={option => this.onDropDownSelect(option)}
+            options={timezones}
+            autoFocus={true}
+            error={error}
+          />
+          { error
+            ? <p className="error">Please select time zone</p>
+            : null
+          }
+        </MessageBoxFunctionalLayout>
+      </Modal>
     );
   }
 }
