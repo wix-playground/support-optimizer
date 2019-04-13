@@ -22,7 +22,7 @@ export default class Fetcher {
   getTickets = async ({date = '2019-04-10', ...costs}) =>
     this.api.get(apiConfig.tickets, {
       params: {
-        date, ...costs
+        day: date, ...costs
       },
     });
 
@@ -30,7 +30,8 @@ export default class Fetcher {
   getCalls = async ({date = '2019-04-10', ...costs}) =>
     this.api.get(apiConfig.calls, {
       params: {
-        date, ...costs
+        day: date,
+        ...costs
       },
     });
 }
