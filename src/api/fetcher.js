@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiConfig = {
-  baseURL: `http://35.237.128.222:8080`,
+  baseURL: `https://35.244.207.35:8080/`,
   dateRange: '/date_range',
   tickets: '/tickets',
   calls: '/calls',
