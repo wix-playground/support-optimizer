@@ -87,14 +87,31 @@ class CallsChart extends React.PureComponent {
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="hour" />
+            <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="min_count" stackId="count" fill="#f29f2b" />
-            <Bar dataKey="count" stackId="count" fill="#8884d8" />
-            <Bar dataKey="max_count" stackId="count" fill="#f22b46" />
+
+            <Bar dataKey="min_count" fill="#f29f2b" />
+            <Bar dataKey="count" fill="#8884d8" />
+            <Bar dataKey="max_count" fill="#f22b46" />
           </BarChart>
+
+          {/*<BarChart*/}
+          {/*  width={500}*/}
+          {/*  height={300}*/}
+          {/*  data={support}*/}
+          {/*  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}*/}
+          {/*>*/}
+          {/*  <CartesianGrid strokeDasharray="3 3" />*/}
+          {/*  <XAxis dataKey="hour" />*/}
+          {/*  <YAxis />*/}
+          {/*  <Tooltip />*/}
+          {/*  <Legend />*/}
+          {/*  <Bar dataKey="min_count" stackId="count" fill="#f29f2b" />*/}
+          {/*  <Bar dataKey="count" stackId="count" fill="#8884d8" />*/}
+          {/*  <Bar dataKey="max_count" stackId="count" fill="#f22b46" />*/}
+          {/*</BarChart>*/}
         </Col>
 
       </Row>
