@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiConfig = {
-  baseURL: `http://35.237.128.222:8080`,
+  baseURL: `https://bo.wix.com/support-optimizer-backend`,
   dateRange: '/date_range',
   tickets: '/tickets',
   calls: '/calls',
