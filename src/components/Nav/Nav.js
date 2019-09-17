@@ -15,12 +15,13 @@ class Nav extends React.Component {
     return (
       <nav className={s.nav}>
         <ul>
-          <li><NavLink to="/tickets" activeClassName={s.active}><DocumentSend/>{t('app.tickets')}</NavLink></li>
-          <li><NavLink to="/calls" activeClassName={s.active}><Phone/>{t('app.calls')}</NavLink></li>
+          <li><NavLink to="./tickets" activeClassName={s.active}><DocumentSend/>{t('app.tickets')}</NavLink></li>
+          <li><NavLink to="./calls" activeClassName={s.active}><Phone/>{t('app.calls')}</NavLink></li>
         </ul>
       </nav>
     );
   }
+
 }
 
 export default translate()(Nav);
