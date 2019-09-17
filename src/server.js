@@ -33,7 +33,7 @@ export default hot(module, (app, context) => {
   });
 
   app.get('*', (req, res) => {
-    res.redirect(req.baseUrl+'/');
+    res.redirect('./');
   });
 
   function getRenderModel(req) {
