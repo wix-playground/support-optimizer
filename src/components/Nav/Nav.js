@@ -21,6 +21,7 @@ class Nav extends React.Component {
       </nav>
     );
   }
+
 }
 
 export default translate()(Nav);
