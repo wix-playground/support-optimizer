@@ -1,6 +1,6 @@
 import React from 'react';
 import { translate } from 'react-i18next';
-import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis} from 'recharts';
+import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis, ResponsiveContainer} from 'recharts';
 import { Col, Row } from 'wix-style-react/dist/src/Grid';
 import Loader from 'wix-style-react/Loader';
 import { convertDate } from '../../utils';
@@ -44,6 +44,7 @@ class CallsChart extends React.Component {
     const { issues, support } = this.state;
     return (
       <Row>
+      <Row>
         <Col span={5}>
           <Row>Tickets</Row>
           <LineChart
@@ -66,26 +67,29 @@ class CallsChart extends React.Component {
 
         </Col>
         <Col span={2} />
-        <Col span={5}>
+      </Row>
+      <Row>
+        <Col span={12} >
           <Row>Support</Row>
-          <BarChart
-            width={500}
-            height={300}
-            data={support}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="hour" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="min_count" fill="#f29f2b" />
-            <Bar dataKey="count" fill="#8884d8" />
-            <Bar dataKey="max_count" fill="#f22b46" />
-          </BarChart>
+          <ResponsiveContainer width='100%' aspect={2.0/1.0}>
+            <BarChart
+                  data={support}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="hour" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="min_count" fill="#f29f2b" />
+                    <Bar dataKey="count" fill="#8884d8" />
+                    <Bar dataKey="max_count" fill="#f22b46" />
+                    </BarChart>
+            </ResponsiveContainer>
         </Col>
       </Row>
-    );
+      </Row>
+  );
   }
 };
 
