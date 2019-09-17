@@ -79,9 +79,9 @@ class CallsChart extends React.Component {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="min_count" stackId="count" fill="#f29f2b" />
-            <Bar dataKey="count" stackId="count" fill="#8884d8" />
-            <Bar dataKey="max_count" stackId="count" fill="#f22b46" />
+            <Bar dataKey="min_count" fill="#f29f2b" />
+            <Bar dataKey="count" fill="#8884d8" />
+            <Bar dataKey="max_count" fill="#f22b46" />
           </BarChart>
         </Col>
       </Row>
