@@ -67,6 +67,24 @@ class CallsChart extends React.Component {
 
         </Col>
         <Col span={2} />
+        <Col span={5}>
+          <Row>Support</Row>
+          <BarChart
+            width={500}
+            height={300}
+            data={support}
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="hour" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="min_count" stackId="count" fill="#f29f2b" />
+            <Bar dataKey="count" stackId="count" fill="#8884d8" />
+            <Bar dataKey="max_count" stackId="count" fill="#f22b46" />
+          </BarChart>
+        </Col>
       </Row>
       <Row>
         <Col span={12} >
