@@ -1,6 +1,6 @@
 import wixExpressCsrf from '@wix/wix-express-csrf';
 import wixExpressRequireHttps from '@wix/wix-express-require-https';
-import { hot } from 'bootstrap-hot-loader';
+import { hot } from '@wix/bootstrap-hot-loader';
 
 // This function is the main entry for our server. It accepts an express Router
 // (see http://expressjs.com) and attaches routes and middlewares to it.
